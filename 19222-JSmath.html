@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Питагорова теорема</title>
+    <script>
+        function calculateCathetusA() {
+            let cathetusB = parseFloat(document.getElementById("cathetusB").value);
+            let hypotenuseC = parseFloat(document.getElementById("hypotenuseC").value);
+
+            if (isNaN(cathetusB) || isNaN(hypotenuseC) || cathetusB <= 0 || hypotenuseC <= 0 || cathetusB > hypotenuseC) {
+                alert("Моля, въведете валидни положителни стойности за катет b и хипотенуза c, като хипотенузата трябва да е по - голяма от катета.");
+                return;
+            }
+
+            let cathetusA = Math.sqrt(Math.pow(hypotenuseC, 2) - Math.pow(cathetusB, 2));
+
+            document.getElementById("result").innerHTML = "Катет a: " + cathetusA.toFixed(3);
+        }
+        function clearElements() {
+            document.getElementById("cathetusB").value = "";
+            document.getElementById("hypotenuseC").value = "";
+            document.getElementById("result").innerHTML = "";
+            
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Изчисляване на катет a по Питагоровата теорема</h2>
+
+    <label for="cathetusB">Катет b:</label>
+    <input type="number" id="cathetusB">
+
+    <label for="hypotenuseC">Хипотенуза c:</label>
+    <input type="number" id="hypotenuseC">
+
+    <button onclick="calculateCathetusA()">Изчисли</button>
+    <button onclick="clearElements()">Изчисти</button>
+
+    <p id="result"></p>
+
+</body>
+</html>
